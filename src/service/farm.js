@@ -65,12 +65,14 @@ export const getCommodityList = (params) => {
   let paramsStr = qs.stringify(_.pickBy(params, (item) => {
     return item !== '' && item !== undefined;
   }));
-  return service.get(`/v1/goods/page?${paramsStr}`);
+  // return service.get(`/v1/goods/page?${paramsStr}`);
+  return service.get(`/v1/goods/pageByShop?${paramsStr}`);
 };
 
 // 获取商品详情接口
 export const getGoodsById = (id) => {
-  return service.get(`/v1/goods/${id}`);
+  return service.get(`/v1/goods/getGoodsDetailByShop?goodsId=${id}`);
+  // return service.get(`/v1/goods/${id}`);
 };
 
 // 防伪码验证
@@ -78,7 +80,8 @@ export const checkTracingCode = (params) => {
   let paramsStr = qs.stringify(_.pickBy(params, (item) => {
     return item !== '' && item !== undefined;
   }));
-  return service.get(`/v1/trace/recognize?${paramsStr}`);
+  return service.get(`/v1/trace/recognizeByShop?${paramsStr}`);
+  // return service.get(`/v1/trace/recognize?${paramsStr}`);
 };
 
 // 查询溯源批次列表

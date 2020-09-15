@@ -92,6 +92,8 @@ export default {
   async created() {
     try {
       let {goodsId} = this.$route.query;
+      await this.$nextTick();
+      this.$refs.loading.show();
       let res = await this.$service.getGoodsById(goodsId);
       if (res && res.code === 0) {
         this.goods = res.data;
