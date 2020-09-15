@@ -2,6 +2,7 @@
   <div class="commodity-info-container">
     <div v-if="traceConfirm.queryedNum === 1" :class="['first-content', loaded && 'loaded']">
       <div class="safe-icon">
+        <svg-icon icon-class="wap_save_goods_icon"></svg-icon>
       </div>
       <div class="text">
         您所查询的商品为首次扫码验证，是正品！<br />
@@ -211,17 +212,19 @@ export default {
       align-items: center;
       width: 2.02rem;
       height: 1.38rem;
-      background-image: url('../../assets/image/wap_quality_goods_icon.png');
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-position: center center;
+      // background-image: url('../../assets/image/wap_quality_goods_icon.png');
+      // background-size: cover;
+      // background-repeat: no-repeat;
+      // background-position: center center;
       opacity: 0;
       transform-origin: 50% 50%;
       transform: scale(2);
       transition: all .3s cubic-bezier(0.6, 0.04, 0.98, 0.335);
       .svg-icon {
-        width: 0.4rem;
-        height: 0.44rem;
+        width: 2.02rem;
+        height: 1.38rem;
+        // width: 0.4rem;
+        // height: 0.44rem;
       }
     }
     &.loaded {

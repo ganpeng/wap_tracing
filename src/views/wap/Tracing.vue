@@ -2,7 +2,7 @@
   <div class="wap-tracing-container">
     <div class="banner">
       <div class="title">
-        吉视农业物联网溯源系统
+        田间到餐桌全程可追溯
       </div>
       <div class="desc">
         一物一码&nbsp;｜&nbsp;安全到家
