@@ -53,13 +53,14 @@ export default {
     .q-code {
       display: flex;
       justify-content: center;
-      align-items: flex-end;
+      align-items: center;
       width: 0.7rem;
-      height: 0.9rem;
+      height: 0.7rem;
       margin-left: 0.15rem;
+      background-color: #fff;
       img {
-        width: 0.7rem;
-        height: 0.7rem;
+        width: 0.6rem;
+        height: 0.6rem;
       }
     }
   }
