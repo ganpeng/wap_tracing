@@ -8,7 +8,7 @@
         一物一码&nbsp;｜&nbsp;安全到家
       </div>
     </div>
-    <div class="tracing-detail-content">
+    <div :style="getMinHeightStyle" class="tracing-detail-content">
       <div class="tab-list-container sticky">
         <ul class="tab-list">
           <li
@@ -46,6 +46,7 @@ export default {
   components: {PageFooter, CommodityInfo, CompanyInfo, TracingInfo},
   data() {
     return {
+      minHeight: 350,
       activeIndex: 0,
       tabList: [
         {
@@ -60,9 +61,31 @@ export default {
       ]
     };
   },
+  async created() {
+    try {
+      await this.$nextTick();
+      this.setMinHeight();
+    } catch (err) {
+      console.log(err);
+    }
+  },
+  computed: {
+    getMinHeightStyle() {
+      return `min-height: ${this.minHeight / 100}rem;`;
+    }
+  },
   methods: {
     changeTab(index) {
       this.activeIndex = index;
+    },
+    async setMinHeight() {
+      try {
+        let height = window.innerHeight;
+        let minHeight = height - 150 - 143;
+        this.minHeight = minHeight;
+      } catch (err) {
+        console.log(err);
+      }
     }
   }
 }

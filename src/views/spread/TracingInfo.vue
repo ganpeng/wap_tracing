@@ -1,6 +1,6 @@
 <template>
   <div class="tracing-info-container">
-    <ul class="tracing-list">
+    <ul v-if="traceInfo.length > 0" class="tracing-list">
       <li v-for="(trace, index) in traceInfo" :key="index" class="tracing-item">
         <div class="header">
           <div class="left">
@@ -28,6 +28,10 @@
         </div>
       </li>
     </ul>
+    <div v-else class="no-trace-data">
+      <div class="no-trace-data-img"></div>
+      <div class="no-trace-data-text">暂无溯源信息</div>
+    </div>
   </div>
 </template>
 <script>
@@ -38,6 +42,7 @@ export default {
   components: {Mp4VideoPlayer},
   data() {
     return {
+      minHeight: 350,
       traceInfo: []
     };
   },
@@ -83,7 +88,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .tracing-info-container {
-  min-height: 3rem;
+  min-height: 3.5rem;
   background-color: #fff;
   .tracing-list {
     .tracing-item {
@@ -172,6 +177,28 @@ export default {
     }
     .tracing-item:last-child {
       margin-bottom: 0;
+    }
+  }
+  .no-trace-data {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 3.5rem;
+    .no-trace-data-img {
+      width: 2.5rem;
+      height: 1.42rem;
+      background-image: url('../../assets/image/wap_no_trace_data_icon.png');
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+      background-position: center center;
+    }
+    .no-trace-data-text {
+      font-size: 0.12rem;
+      font-weight: 400;
+      color: #777777;
+      text-align: center;
     }
   }
 }
