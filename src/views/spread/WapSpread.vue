@@ -37,7 +37,6 @@
   </div>
 </template>
 <script>
-import Stickyfill from 'stickyfilljs';
 import PageFooter from '../wap/PageFooter';
 import CommodityInfo from './CommodityInfo';
 import CompanyInfo from '../wap/CompanyInfo';
@@ -60,15 +59,6 @@ export default {
         }
       ]
     };
-  },
-  async created() {
-    try {
-      await this.$nextTick();
-      let sticky = document.querySelector('.sticky');
-      Stickyfill.add(sticky);
-    } catch (err) {
-      console.log(err);
-    }
   },
   methods: {
     changeTab(index) {
@@ -157,16 +147,3 @@ export default {
   }
 }
 </style>
-<style lang="scss">
-.sticky {
-    position: -webkit-sticky;
-    position: sticky;
-    top: 0;
-}
-.sticky:before,
-.sticky:after {
-    content: '';
-    display: table;
-}
-</style>
-
