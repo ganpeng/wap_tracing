@@ -22,7 +22,7 @@ export const constantRouterMap = [
   {
     path: '/spread',
     name: 'WapSpread',
-    component: () => import('@/views/wap/WapSpread')
+    component: () => import('@/views/spread/WapSpread')
   },
 ];
 

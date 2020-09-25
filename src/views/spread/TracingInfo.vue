@@ -13,7 +13,8 @@
         <div class="card-container">
           <div class="img-detail">
             <div v-for="(url, index) in trace.imageUrl" :key="index"
-              :style="bgImageStyle(url)" class="img"></div>
+              :style="bgImageStyle(url)"
+              :class="['img', index === (trace.imageUrl.length - 1) && 'no-mb']"></div>
             <ul v-if="trace.detailList.length > 0" class="detail-data-list">
               <li v-for="(detail, _index) in trace.detailList" :key="_index" class="detail-data-item">
                 <div class="detail-data-title">{{detail.title}}</div>
@@ -42,10 +43,14 @@ export default {
   },
   async created() {
     try {
-      let {goodsId, batchNo} = this.$route.query;
-      let res = await this.$service.getBatchList({goodsId, batchNo});
+      let {goodsId} = this.$route.query;
+      let res = await this.$service.getBatchList({goodsId});
       if (res && res.code === 0) {
-        let traceInfo = _.get(res.data, 'list.0.traceInfo') || [];
+        let batchList = _.get(res.data, 'list') || [];
+        let batch = batchList.filter((batch) => {
+          return batch.selectedStatus === 'DEFAULT';
+        });
+        let traceInfo = _.get(batch, '0.traceInfo') || [];
         this.traceInfo = traceInfo.map((trace) => {
           if (!_.isArray(trace.imageUrl)) {
             if (trace.imageUrl) {
@@ -130,6 +135,10 @@ export default {
             background-repeat: no-repeat;
             background-size: 100% 100%;
             background-position: center center;
+            margin-bottom: 0.1rem;
+            &.no-mb {
+              margin-bottom: 0;
+            }
           }
           .detail-data-list {
             .detail-data-item {
